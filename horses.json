@@ -1,1 +1,1 @@
-{"horses": [{"name": "Embe", "color": [200, 0, 0], "y_pos": 50, "x_pos": 50}, {"name": "Flo", "color": [200, 0, 0], "y_pos": 150, "x_pos": 50}, {"name": "Hachi", "color": [200, 0, 0], "y_pos": 250, "x_pos": 50}, {"name": "Embe", "color": [200, 0, 0], "y_pos": 350, "x_pos": 50}, {"name": "flo", "color": [200, 0, 0], "y_pos": 450, "x_pos": 50}, {"name": "Flo", "color": [200, 0, 0], "y_pos": 550, "x_pos": 50}]}
+{"horses": [{"name": "test", "x_pos": 50, "y_pos": 50}, {"name": "t", "x_pos": 50, "y_pos": 150}]}
