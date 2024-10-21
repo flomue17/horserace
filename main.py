@@ -1,43 +1,23 @@
 import pygame
 import sys
-from gui import GUI
 from game import Game
+from gui import GUI
 
 def main():
     pygame.init()
 
-    # Bildschirmgröße definieren
-    WIDTH, HEIGHT = pygame.display.Info().current_w, pygame.display.Info().current_h
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("Pferderennen")
-
-    # Initialisiere GUI und Game
-    gui = GUI(screen, WIDTH, HEIGHT)
-    game = Game(WIDTH, HEIGHT)
-
-    # Hauptschleife
+    # Erstelle das GUI und Game-Objekt
+    gui = GUI()
+    game = Game()
+    game.horses = game.load_horses_from_json("horses.json")
+    # Starte das Spiel
     running = True
-    clock = pygame.time.Clock()
-
     while running:
-        screen.fill((255, 255, 255))  # Weißer Hintergrund
+        running = gui.handle_events(game)
+        gui.update_screen(game)
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-                pygame.quit()
-                sys.exit()
-
-            # Übergabe des Events an die GUI und das Spiel
-            gui.handle_event(event, game)
-            game.handle_event(event, gui)
-
-        # Zeichnen der Pferde und GUI
-        game.draw(screen)
-        gui.draw(screen)
-
-        pygame.display.flip()
-        clock.tick(30)
+    pygame.quit()
+    sys.exit()
 
 if __name__ == "__main__":
     main()

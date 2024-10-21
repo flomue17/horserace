@@ -1,18 +1,31 @@
-import pygame
-
 class Horse:
-    def __init__(self, name, y_pos, start_x, bat_image):
-        self.name = name
-        self.x_pos = start_x
-        self.y_pos = y_pos
-        self.bat_image = bat_image
+    @staticmethod
+    def create_horse(name, index):
+        """
+        Erstellt ein neues Pferd mit einem Namen und einer Y-Position basierend auf dem Index.
+        """
+        return {
+            "name": name,
+            "color": [200, 0, 0],  # Farbe des Pferdes
+            "y_pos": 50 + index * 100,  # Y-Position basierend auf der Anzahl der Pferde
+            "x_pos": 50  # Startposition
+        }
 
-    def draw(self, screen, font):
-        # Zeichne die Fledermaus und den Teamnamen
-        screen.blit(self.bat_image, (self.x_pos, self.y_pos))
-        horse_name_text = font.render(self.name, True, (0, 0, 0))
-        text_rect = horse_name_text.get_rect(center=(self.x_pos + 25, self.y_pos + 45))
-        screen.blit(horse_name_text, text_rect)
+    @staticmethod
+    def get_step_distance():
+        """
+        Berechnet die Schrittweite, die das Pferd bei jedem Zug vorankommt.
+        """
+        return 10  # Beispielsweise, passe diesen Wert nach Belieben an
 
-    def move(self, step_distance):
-        self.x_pos += step_distance
+    @staticmethod
+    def from_dict(data):
+        """
+        Erstellt ein Horse-Objekt aus einem Dictionary (z.B. nach dem Laden aus JSON).
+        """
+        return {
+            "name": data["name"],
+            "color": data["color"],
+            "y_pos": data["y_pos"],
+            "x_pos": data["x_pos"]
+        }

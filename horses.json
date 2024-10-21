@@ -1,1 +1,1 @@
-{"horses": [{"name": "test", "x_pos": 50, "y_pos": 50}, {"name": "t", "x_pos": 50, "y_pos": 150}]}
+{"horses": [{"name": "a", "x_pos": 50, "y_pos": 50}, {"name": "b", "x_pos": 50, "y_pos": 150}, {"name": "c", "x_pos": 50, "y_pos": 250}, {"name": "d", "x_pos": 50, "y_pos": 350}, {"name": "1", "x_pos": 50, "y_pos": 450}, {"name": "2", "x_pos": 50, "y_pos": 550}, {"name": "3", "x_pos": 50, "y_pos": 650}, {"name": "4", "x_pos": 50, "y_pos": 750}, {"name": "5", "x_pos": 50, "y_pos": 850}, {"name": "6", "x_pos": 50, "y_pos": 950}]}
