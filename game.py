@@ -1,4 +1,6 @@
 import json
+from config import step_size, goal_x, amount_points, start_x
+
 from horse import Horse
 
 class Game:
@@ -11,11 +13,23 @@ class Game:
         horse = Horse.create_horse(name, len(self.horses))
         self.horses.append(horse)
 
-    def move_horse(self, horse_name):
+    def move_horse(self, horse_name, size):
         # Bewege ein Pferd, basierend auf seinem Namen
         for horse in self.horses:
             if horse["name"] == horse_name:
-                horse["x_pos"] += Horse.get_step_distance()
+                horse["x_pos"] += size * step_size
+
+                if horse["x_pos"] > goal_x:
+                    horse["x_pos"] = goal_x
+                if horse["x_pos"] < start_x:
+                    horse["x_pos"] = start_x
+
+                horse["points"] += size
+
+                if horse["points"] > amount_points:
+                    horse["points"] = amount_points
+                if horse["points"] < 0:
+                    horse["points"] = 0
 
     def save_horses_to_json(self, horses, file):
         # Speichere die Pferde in eine JSON-Datei
@@ -28,10 +42,12 @@ class Game:
             data = json.load(f)
             return data["horses"]
 
+    def sort_horses(self):
+        self.horses = sorted(self.horses, key=lambda horse: -horse["points"])
+
     def reset_horses(self):
-        tmp_horses = self.load_horses_from_json("blank.json")
-        self.save_horses_to_json(tmp_horses, "horses.json")
-        self.load_horses_from_json("horses.json")
+        self.save_horses_to_json([], "horses.json")
+        self.horses = self.load_horses_from_json("horses.json")
 
     def check_winner(self, goal_x):
         # Überprüfen, ob ein Pferd das Ziel erreicht hat

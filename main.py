@@ -1,5 +1,7 @@
 import pygame
 import sys
+
+from config import goal_x
 from game import Game
 from gui import GUI
 
@@ -15,7 +17,6 @@ def main():
     while running:
         running = gui.handle_events(game)
         gui.update_screen(game)
-
     pygame.quit()
     sys.exit()
 
