@@ -10,6 +10,9 @@ class GUI:
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         pygame.display.set_caption("Pferderennen")
 
+        self.background_image = pygame.image.load("background_image.png")
+        self.background_image = pygame.transform.scale(self.background_image, (WIDTH, HEIGHT))
+
         # Farben
 
         # Eingabefeld
@@ -29,7 +32,7 @@ class GUI:
 
         # Bilder laden
         self.bat_image = pygame.image.load('bat.png')
-        self.bat_image = pygame.transform.scale(self.bat_image, (50, 30))
+        self.bat_image = pygame.transform.scale(self.bat_image, (100, 60))
 
     def handle_events(self, game):
         for event in pygame.event.get():
@@ -85,7 +88,7 @@ class GUI:
         return True
 
     def update_screen(self, game):
-        self.screen.fill(WHITE)
+        self.screen.blit(self.background_image, (0, 0))
 
         # Pferde zeichnen
         for index, horse in enumerate(game.horses):
