@@ -11,8 +11,8 @@ BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 
-start_x = 15
-start_y = 15
+start_x = 0
+start_y = 0
 
 goal_x = 1920-75
 

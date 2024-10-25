@@ -93,8 +93,8 @@ class GUI:
         # Pferde zeichnen
         for index, horse in enumerate(game.horses):
             self.screen.blit(self.bat_image, (horse["x_pos"], start_y + start_y + index * (HEIGHT / amount_teams)))
-            horse_name_text = self.font.render(horse["name"] + " ," + str(horse["points"]), True, BLACK)
-            text_rect = horse_name_text.get_rect(center=(horse["x_pos"] + 25, start_y + start_y + index * (HEIGHT / amount_teams) + 45))
+            horse_name_text = self.font.render(horse["name"] + "," + str(horse["points"]), True, WHITE)
+            text_rect = horse_name_text.get_rect(center=(horse["x_pos"] + 45, start_y + start_y + index * (HEIGHT / amount_teams) + 70))
             self.screen.blit(horse_name_text, text_rect)
 
         # Eingabefeld zeichnen
