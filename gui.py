@@ -17,22 +17,22 @@ class GUI:
 
         # Eingabefeld
         self.font = pygame.font.Font(None, 36)
-        self.input_box = pygame.Rect(WIDTH // 2 - 200, HEIGHT - 100, 400, 32)
+        self.input_box = pygame.Rect(10, HEIGHT - 75, 400, 32)
         self.input_text = ''
         self.active = False
 
         # Buttons
         self.button_font = pygame.font.Font(None, 48)
-        self.start_button = pygame.Rect(WIDTH - 220, HEIGHT - 190, 200, 50)
-        self.restart_button = pygame.Rect(WIDTH - 220, HEIGHT - 130, 200, 50)
-        self.quit_button = pygame.Rect(WIDTH - 220, HEIGHT - 70, 200, 50)
+        self.start_button = pygame.Rect(250, HEIGHT - 75, 20, 32)
+        self.restart_button = pygame.Rect(285, HEIGHT - 75, 20, 32)
+        self.quit_button = pygame.Rect(320, HEIGHT - 75, 20, 32)
 
         # Spielzustände
         self.game_started = False
 
         # Bilder laden
         self.bat_image = pygame.image.load('bat.png')
-        self.bat_image = pygame.transform.scale(self.bat_image, (100, 60))
+        self.bat_image = pygame.transform.scale(self.bat_image, (130, 80))
 
     def handle_events(self, game):
         for event in pygame.event.get():
@@ -106,15 +106,15 @@ class GUI:
 
         # Start-Button zeichnen
         if not self.game_started:
-            pygame.draw.rect(self.screen, GREEN, self.start_button)
-            start_text = self.button_font.render("Start", True, BLACK)
-            self.screen.blit(start_text, (self.start_button.x + 50, self.start_button.y + 10))
+            pygame.draw.rect(self.screen, WHITE, self.start_button)
+            start_text = self.button_font.render("S", True, BLACK)
+            self.screen.blit(start_text, (self.start_button.x , self.start_button.y ))
 
-            restart_text = self.button_font.render("Restart", True, BLACK)
-            pygame.draw.rect(self.screen, GREEN, self.restart_button)
-            self.screen.blit(restart_text, (self.restart_button.x + 50, self.restart_button.y + 10))
+            restart_text = self.button_font.render("R", True, BLACK)
+            pygame.draw.rect(self.screen, WHITE, self.restart_button)
+            self.screen.blit(restart_text, (self.restart_button.x, self.restart_button.y))
 
-        quit_text = self.button_font.render("Quit", True, BLACK)
-        pygame.draw.rect(self.screen, GREEN, self.quit_button)
-        self.screen.blit(quit_text, (self.quit_button.x + 50, self.quit_button.y + 10))
+        quit_text = self.button_font.render("Q", True, BLACK)
+        pygame.draw.rect(self.screen, WHITE, self.quit_button)
+        self.screen.blit(quit_text, (self.quit_button.x, self.quit_button.y))
         pygame.display.flip()
