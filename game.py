@@ -1,5 +1,7 @@
 import json
-from config import step_size, goal_x, amount_points, start_x
+from distutils.command.config import config
+
+from config import step_size, goal_x, amount_points, start_x, HEIGHT, amount_teams
 
 from horse import Horse
 
@@ -55,3 +57,14 @@ class Game:
             if horse["x_pos"] >= goal_x:
                 return horse["name"]
         return None
+
+    def top3(self):
+        self.sort_horses()
+        self.horses = self.horses[:3]
+        self.save_horses_to_json(self.horses, "horses.json")
+
+    def checkHorse(self, horse_check):
+        for horse in self.horses:
+            if horse["name"] == horse_check:
+                return True
+        return False

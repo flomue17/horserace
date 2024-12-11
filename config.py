@@ -16,8 +16,8 @@ start_y = 0
 
 goal_x = 1920-75
 
-amount_points = 50
+amount_points = 60
 
 step_size = (goal_x-start_x) / amount_points
 
-amount_teams = 10
+amount_teams = 9
